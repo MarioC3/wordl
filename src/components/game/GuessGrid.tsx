@@ -1,6 +1,7 @@
 import { range } from 'lodash-es'
 import { Guess } from '../../schema'
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants'
+import { checkGuess } from '../../utils/game-helpers'
 
 interface Props {
 	guesses: Guess[]
