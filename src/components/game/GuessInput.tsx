@@ -1,11 +1,17 @@
 import { useEffect, useRef, useState } from 'react'
+import { Guess } from '../../schema'
 
-export const GuessInput = () => {
+interface Props {
+	handleSubmitGuess: (guess: Guess) => void
+}
+
+export const GuessInput = ({ handleSubmitGuess }: Props) => {
 	const guessInputRef = useRef<HTMLInputElement>(null)
 	const [guess, setGuess] = useState('')
 
 	const handleSubmit = () => {
-		console.log({ guess })
+		const newGuess = { id: crypto.randomUUID(), word: guess }
+		handleSubmitGuess(newGuess)
 		setGuess('')
 	}
 
@@ -20,6 +26,7 @@ export const GuessInput = () => {
 			window.removeEventListener('focus', focusInput)
 		}
 	}, [])
+
 	return (
 		<form
 			onSubmit={(e) => {
@@ -31,7 +38,7 @@ export const GuessInput = () => {
 				htmlFor="guess-input"
 				className="flex flex-col gap-1"
 			>
-				<span className="text-slate-700">Enter Guess:</span>
+				<span className="text-sm text-slate-700">Enter Guess:</span>
 				<input
 					required
 					minLength={5}
