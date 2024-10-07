@@ -39,7 +39,7 @@ export const GuessInput = () => {
 					title="Input only accepts 5 letters."
 					pattern="[a-zA-z]{5}"
 					ref={guessInputRef}
-					className="block w-full rounded-md border-transparent bg-slate-100 text-2xl focus:border-slate-300 focus:ring-0"
+					className="block w-full rounded-md border-transparent bg-slate-100 text-2xl font-medium focus:border-slate-300 focus:ring-0"
 					type="text"
 					id="guess-input"
 					value={guess}
