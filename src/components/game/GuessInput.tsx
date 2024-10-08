@@ -39,9 +39,8 @@ export const GuessInput = ({ handleSubmitGuess }: Props) => {
 		>
 			<label
 				htmlFor="guess-input"
-				className="flex flex-col gap-1"
+				className="flex flex-col-reverse gap-1"
 			>
-				<span className="text-sm text-slate-700">Enter Guess:</span>
 				<input
 					disabled={guesses.length >= NUM_OF_GUESSES_ALLOWED}
 					required
@@ -50,7 +49,7 @@ export const GuessInput = ({ handleSubmitGuess }: Props) => {
 					title="Input only accepts 5 letters."
 					pattern="[a-zA-z]{5}"
 					ref={guessInputRef}
-					className="block w-full rounded-md border border-slate-300 bg-slate-100 text-2xl font-medium focus:border-slate-300 focus:outline-slate-300 focus:ring-0 disabled:border-transparent disabled:bg-slate-50"
+					className="peer block w-full rounded-md border border-slate-300 bg-slate-100 text-2xl font-medium focus:border-slate-300 focus:outline-slate-300 focus:ring-0 disabled:border-transparent disabled:bg-slate-50"
 					type="text"
 					id="guess-input"
 					value={guess}
@@ -59,6 +58,7 @@ export const GuessInput = ({ handleSubmitGuess }: Props) => {
 						setGuess(nextGuess)
 					}}
 				/>
+				<span className="text-sm text-slate-700 peer-disabled:text-slate-300">Enter Guess:</span>
 			</label>
 		</form>
 	)
