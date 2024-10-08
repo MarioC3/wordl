@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { type Result } from '../../schema'
 
@@ -5,7 +6,7 @@ interface Props {
 	result: string | Result
 }
 
-export const Word = ({ result }: Props) => {
+export const Word = memo(({ result }: Props) => {
 	let word = ''
 	let statusClass = ''
 
@@ -34,4 +35,4 @@ export const Word = ({ result }: Props) => {
 			{word}
 		</span>
 	)
-}
+})
