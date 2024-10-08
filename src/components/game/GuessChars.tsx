@@ -1,17 +1,14 @@
-import { memo, useContext } from 'react'
-import { GuessContext } from '../../providers/GuessProvider'
+import { memo, useMemo } from 'react'
 import { checkGuess } from '../../utils/game-helpers'
 import { range } from 'lodash-es'
 import { twMerge } from 'tailwind-merge'
 import { type Result } from '../../schema'
 
-interface GuessWordProps {
-	row: number
+interface GuessCharsProps {
+	word: string
 }
-export const GuessWord = memo(({ row }: GuessWordProps) => {
-	const { guesses } = useContext(GuessContext)
-
-	const result = checkGuess(guesses[row]?.word, 'LEARN') as Result[] | null
+export const GuessChars = memo(({ word }: GuessCharsProps) => {
+	const result = useMemo(() => checkGuess(word, 'LEARN') as Result[] | null, [word])
 
 	return (
 		<>
@@ -24,12 +21,12 @@ export const GuessWord = memo(({ row }: GuessWordProps) => {
 		</>
 	)
 })
-GuessWord.displayName = 'GuessWord'
+GuessChars.displayName = 'GuessWord'
 
 interface CharProps {
 	result: Result | undefined
 }
-const Char = memo(({ result }: CharProps) => {
+const Char = ({ result }: CharProps) => {
 	console.log('Rendering Char')
 	let statusClass = ''
 	if (result) {
@@ -56,6 +53,4 @@ const Char = memo(({ result }: CharProps) => {
 			{result ? result.letter : undefined}
 		</span>
 	)
-})
-
-Char.displayName = 'Char'
+}

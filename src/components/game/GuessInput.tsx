@@ -9,8 +9,7 @@ export const GuessInput = memo(() => {
 	const guessInputRef = useRef<HTMLInputElement>(null)
 
 	const handleSubmit = () => {
-		const newGuess = { id: crypto.randomUUID(), word: guess }
-		const nextGuesses = [...guesses, newGuess]
+		const nextGuesses = [...guesses, guess]
 		setGuesses(nextGuesses)
 		setGuess('')
 	}
