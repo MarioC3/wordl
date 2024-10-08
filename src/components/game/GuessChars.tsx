@@ -1,14 +1,16 @@
-import { memo, useMemo } from 'react'
+import { memo, useContext, useMemo } from 'react'
 import { checkGuess } from '../../utils/game-helpers'
 import { range } from 'lodash-es'
 import { twMerge } from 'tailwind-merge'
 import { type Result } from '../../schema'
+import { WordsContext } from '../../providers/WordsProvider'
 
 interface GuessCharsProps {
 	word: string
 }
 export const GuessChars = memo(({ word }: GuessCharsProps) => {
-	const result = useMemo(() => checkGuess(word, 'LEARN') as Result[] | null, [word])
+	const { answer } = useContext(WordsContext)
+	const result = useMemo(() => checkGuess(word, answer) as Result[] | null, [word, answer])
 
 	return (
 		<>
