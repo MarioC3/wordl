@@ -1,13 +1,11 @@
+import { useContext } from 'react'
 import { range } from 'lodash-es'
-import { Guess } from '../../schema'
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants'
+import { GuessContext } from '../../providers/GuessProvider'
 import { checkGuess } from '../../utils/game-helpers'
 
-interface Props {
-	guesses: Guess[]
-}
-
-export const GuessGrid = ({ guesses }: Props) => {
+export const GuessGrid = () => {
+	const { guesses } = useContext(GuessContext)
 	const gridGuesses = guesses.map((guess) => guess.word.split(''))
 
 	return (

@@ -1,11 +1,14 @@
-import { useEffect, useRef, useState } from 'react'
-import { Guess } from '../../schema'
+import { useEffect, useRef, useState, useContext } from 'react'
+import { GuessContext } from '../../providers/GuessProvider'
+import { type Guess } from '../../schema'
+import { NUM_OF_GUESSES_ALLOWED } from '../../constants'
 
 interface Props {
 	handleSubmitGuess: (guess: Guess) => void
 }
 
 export const GuessInput = ({ handleSubmitGuess }: Props) => {
+	const { guesses } = useContext(GuessContext)
 	const guessInputRef = useRef<HTMLInputElement>(null)
 	const [guess, setGuess] = useState('')
 
@@ -40,13 +43,14 @@ export const GuessInput = ({ handleSubmitGuess }: Props) => {
 			>
 				<span className="text-sm text-slate-700">Enter Guess:</span>
 				<input
+					disabled={guesses.length >= NUM_OF_GUESSES_ALLOWED}
 					required
 					minLength={5}
 					maxLength={5}
 					title="Input only accepts 5 letters."
 					pattern="[a-zA-z]{5}"
 					ref={guessInputRef}
-					className="block w-full rounded-md border-transparent bg-slate-100 text-2xl font-medium focus:border-slate-300 focus:ring-0"
+					className="block w-full rounded-md border border-slate-300 bg-slate-100 text-2xl font-medium focus:border-slate-300 focus:outline-slate-300 focus:ring-0 disabled:border-transparent disabled:bg-slate-50"
 					type="text"
 					id="guess-input"
 					value={guess}
