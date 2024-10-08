@@ -5,7 +5,7 @@ import './index.css'
 import '@fontsource/ibm-plex-serif'
 import '@fontsource/ibm-plex-mono'
 
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById('root') as HTMLDivElement).render(
 	<StrictMode>
 		<App />
 	</StrictMode>
