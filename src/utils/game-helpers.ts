@@ -1,3 +1,5 @@
+// Source: https://github.com/joy-of-react/project-wordle/blob/main/src/game-helpers.js
+
 /**
  * Thanks to Github user dylano for supplying a more-accurate
  * solving algorithm!
