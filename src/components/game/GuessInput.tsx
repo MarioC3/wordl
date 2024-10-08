@@ -1,20 +1,17 @@
-import { useEffect, useRef, useState, useContext } from 'react'
+import { useEffect, useRef, useState, useContext, memo } from 'react'
 import { GuessContext } from '../../providers/GuessProvider'
-import { type Guess } from '../../schema'
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants'
 
-interface Props {
-	handleSubmitGuess: (guess: Guess) => void
-}
-
-export const GuessInput = ({ handleSubmitGuess }: Props) => {
-	const { guesses } = useContext(GuessContext)
-	const guessInputRef = useRef<HTMLInputElement>(null)
+export const GuessInput = memo(() => {
+	const { guesses, setGuesses } = useContext(GuessContext)
 	const [guess, setGuess] = useState('')
+
+	const guessInputRef = useRef<HTMLInputElement>(null)
 
 	const handleSubmit = () => {
 		const newGuess = { id: crypto.randomUUID(), word: guess }
-		handleSubmitGuess(newGuess)
+		const nextGuesses = [...guesses, newGuess]
+		setGuesses(nextGuesses)
 		setGuess('')
 	}
 
@@ -62,4 +59,6 @@ export const GuessInput = ({ handleSubmitGuess }: Props) => {
 			</label>
 		</form>
 	)
-}
+})
+
+GuessInput.displayName = 'GuessInput'

@@ -5,15 +5,34 @@ import { range } from 'lodash-es'
 import { twMerge } from 'tailwind-merge'
 import { type Result } from '../../schema'
 
-interface Props {
+interface GuessWordProps {
 	row: number
 }
 
-export const GuessWord = memo(({ row }: Props) => {
+export const GuessWord = memo(({ row }: GuessWordProps) => {
 	const { guesses } = useContext(GuessContext)
 
-	const result = checkGuess(guesses[row]?.word, 'LEARN') as Result | null
+	const result = checkGuess(guesses[row]?.word, 'LEARN') as Result[] | null
 
+	return (
+		<>
+			{range(5).map((col) => (
+				<Char
+					key={col}
+					result={result?.[col]}
+				/>
+			))}
+		</>
+	)
+})
+
+GuessWord.displayName = 'GuessWord'
+
+interface CharProps {
+	result: Result | undefined
+}
+const Char = memo(({ result }: CharProps) => {
+	console.log('Rendering Char')
 	let statusClass = ''
 	if (result) {
 		switch (result.status) {
@@ -30,20 +49,15 @@ export const GuessWord = memo(({ row }: Props) => {
 	}
 
 	return (
-		<>
-			{range(5).map((col) => (
-				<span
-					key={col}
-					className={twMerge(
-						'flex aspect-square items-center justify-center rounded-sm border-2 border-slate-200 text-lg font-bold group-first:first:rounded-tl-xl group-first:last:rounded-tr-xl group-last:first:rounded-bl-xl group-last:last:rounded-br-xl',
-						statusClass
-					)}
-				>
-					{result ? result.letter : undefined}
-				</span>
-			))}
-		</>
+		<span
+			className={twMerge(
+				'flex aspect-square items-center justify-center rounded-sm border-2 border-slate-200 text-lg font-bold group-first:first:rounded-tl-xl group-first:last:rounded-tr-xl group-last:first:rounded-bl-xl group-last:last:rounded-br-xl',
+				statusClass
+			)}
+		>
+			{result ? result.letter : undefined}
+		</span>
 	)
 })
 
-GuessWord.displayName = 'GuessWord'
+Char.displayName = 'Char'
