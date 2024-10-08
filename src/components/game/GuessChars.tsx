@@ -27,7 +27,6 @@ interface CharProps {
 	result: Result | undefined
 }
 const Char = ({ result }: CharProps) => {
-	console.log('Rendering Char')
 	let statusClass = ''
 	if (result) {
 		switch (result.status) {
