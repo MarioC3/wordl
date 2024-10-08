@@ -8,7 +8,6 @@ import { type Result } from '../../schema'
 interface GuessWordProps {
 	row: number
 }
-
 export const GuessWord = memo(({ row }: GuessWordProps) => {
 	const { guesses } = useContext(GuessContext)
 
@@ -25,7 +24,6 @@ export const GuessWord = memo(({ row }: GuessWordProps) => {
 		</>
 	)
 })
-
 GuessWord.displayName = 'GuessWord'
 
 interface CharProps {
