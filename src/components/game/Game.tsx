@@ -1,15 +1,14 @@
-import { memo } from 'react'
-
+import { GuessProvider } from '../../providers/GuessProvider'
 import { GuessInput } from './GuessInput'
 import { GuessGrid } from './GuessGrid'
 
-export const Game = memo(() => {
+export const Game = () => {
 	return (
-		<div className="space-y-4">
-			<GuessGrid />
-			<GuessInput />
-		</div>
+		<GuessProvider>
+			<div className="space-y-4">
+				<GuessGrid />
+				<GuessInput />
+			</div>
+		</GuessProvider>
 	)
-})
-
-Game.displayName = 'Game'
+}
