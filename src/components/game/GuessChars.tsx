@@ -4,7 +4,6 @@ import { range } from 'lodash-es'
 import { twMerge } from 'tailwind-merge'
 import { type Result } from '../../schema'
 import { WordsContext } from '../../providers/WordsProvider'
-
 interface GuessCharsProps {
 	word: string
 }
@@ -23,7 +22,7 @@ export const GuessChars = memo(({ word }: GuessCharsProps) => {
 		</>
 	)
 })
-GuessChars.displayName = 'GuessWord'
+GuessChars.displayName = 'GuessChars'
 
 interface CharProps {
 	result: Result | undefined

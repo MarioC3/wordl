@@ -6,7 +6,6 @@ export const WordsContext = createContext<{ answer: string }>({ answer: '' })
 
 export const WordsProvider = ({ children }: PropsWithChildren) => {
 	const value = { answer: sample(WORDS) ?? '' }
-	console.log(value)
 
 	return <WordsContext.Provider value={value}>{children}</WordsContext.Provider>
 }
