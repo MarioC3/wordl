@@ -8,7 +8,6 @@ import { range } from 'lodash-es'
 
 export const GuessGrid = memo(() => {
 	const { answer } = useContext(WordsContext)
-	// console.log(answer)
 	const { guesses } = useContext(GuessContext)
 	const { setGameStatus, setTries } = useContext(GameContext)
 

@@ -1,10 +1,17 @@
 import { type PropsWithChildren, useContext } from 'react'
-import { GameContext } from '../../providers/GameProvider'
+import { m, AnimatePresence } from 'framer-motion'
+import { twMerge } from 'tailwind-merge'
 import { GuessProvider } from '../../providers/GuessProvider'
+import { GameContext } from '../../providers/GameProvider'
+import { WordsContext } from '../../providers/WordsProvider'
 import { GuessInput } from './GuessInput'
 import { GuessGrid } from './GuessGrid'
-import { twMerge } from 'tailwind-merge'
-import { WordsContext } from '../../providers/WordsProvider'
+
+const variants = {
+	initial: { opacity: 0, y: -15 },
+	visible: { opacity: 1, y: 0 },
+	exit: { opacity: 0, y: 15 },
+}
 
 export const Game = () => {
 	const { gameStatus, tries } = useContext(GameContext)
@@ -12,14 +19,39 @@ export const Game = () => {
 		<GuessProvider>
 			<div className="space-y-6">
 				<GuessGrid />
-				{gameStatus === 'playing' ? (
-					<GuessInput />
-				) : (
-					<EndGameBanner
-						status={gameStatus}
-						tries={tries}
-					/>
-				)}
+				<div className="">
+					<AnimatePresence
+						initial={false}
+						mode="popLayout"
+					>
+						{gameStatus === 'playing' ? (
+							<m.div
+								key={gameStatus}
+								variants={variants}
+								initial="initial"
+								animate="visible"
+								exit="exit"
+								transition={{ type: 'spring', duration: 0.4, bounce: 0 }}
+							>
+								<GuessInput />
+							</m.div>
+						) : (
+							<m.div
+								key={gameStatus}
+								variants={variants}
+								initial="initial"
+								animate="visible"
+								exit="exit"
+								transition={{ type: 'spring', duration: 0.4, bounce: 0 }}
+							>
+								<EndGameBanner
+									status={gameStatus}
+									tries={tries}
+								/>
+							</m.div>
+						)}
+					</AnimatePresence>
+				</div>
 			</div>
 		</GuessProvider>
 	)
