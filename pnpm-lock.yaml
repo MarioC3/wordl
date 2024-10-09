@@ -11,7 +11,7 @@ importers:
       '@fontsource/ibm-plex-mono':
         specifier: ^5.1.0
         version: 5.1.0
-      '@fontsource/ibm-plex-serif':
+      '@fontsource/ovo':
         specifier: ^5.1.0
         version: 5.1.0
       lodash-es:
@@ -357,8 +357,8 @@ packages:
   '@fontsource/ibm-plex-mono@5.1.0':
     resolution: {integrity: sha512-XKsZNyRCj6tz8zlatHmniSoLVephMD5GQG2sXgcaEb8DkUO+O61r28uTlIMEZuoZXtP4c4STvL+KUlJM5jZOEg==}
 
-  '@fontsource/ibm-plex-serif@5.1.0':
-    resolution: {integrity: sha512-x8/rprq/hc94eYugICIUJCyUVMC1rPpgmL8km5FhhXIl6l2soaYadLcx4bmVP/rvLr/cRtj4GCaV6ZnGg3jaPA==}
+  '@fontsource/ovo@5.1.0':
+    resolution: {integrity: sha512-V4V6i9PzzD6bHup76BS1rtdiIKMyr3G16lTX+Z6zCaFafMRuiXsYQ0SvqG5WK4zGVVMsVAgeFjfeOC/300jK4Q==}
 
   '@humanfs/core@0.19.0':
     resolution: {integrity: sha512-2cbWIHbZVEweE853g8jymffCA+NCMiuqeECeBBLm8dg2oFdjuGJhgN4UAbI+6v0CKbbhvtXA4qV8YR5Ji86nmw==}
@@ -2075,7 +2075,7 @@ snapshots:
 
   '@fontsource/ibm-plex-mono@5.1.0': {}
 
-  '@fontsource/ibm-plex-serif@5.1.0': {}
+  '@fontsource/ovo@5.1.0': {}
 
   '@humanfs/core@0.19.0': {}
 

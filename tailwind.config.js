@@ -8,7 +8,7 @@ export default {
 			fontFamily: {
 				sans: ['IBM Plex Mono', ...defaultTheme.fontFamily.sans],
 				mono: ['IBM Plex Mono', ...defaultTheme.fontFamily.mono],
-				serif: ['IBM Plex Serif', ...defaultTheme.fontFamily.serif],
+				serif: ['Ovo', ...defaultTheme.fontFamily.serif],
 			},
 		},
 	},
