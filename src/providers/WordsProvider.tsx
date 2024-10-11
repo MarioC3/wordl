@@ -1,11 +1,20 @@
-import { type PropsWithChildren, createContext } from 'react'
+import { type PropsWithChildren, createContext, useMemo, useState } from 'react'
 import { WORDS } from '../data'
 import { sample } from 'lodash-es'
 
-export const WordsContext = createContext<{ answer: string }>({ answer: '' })
+interface WordsContext {
+	answer: string
+	handleSetAnswer: () => void
+}
+export const WordsContext = createContext<WordsContext>({} as WordsContext)
 
 export const WordsProvider = ({ children }: PropsWithChildren) => {
-	const value = { answer: sample(WORDS) ?? '' }
+	const [answer, setAnswer] = useState(sample(WORDS) ?? '')
+
+	const handleSetAnswer = () => {
+		setAnswer(sample(WORDS) ?? '')
+	}
+	const value = useMemo(() => ({ answer, handleSetAnswer }), [answer])
 
 	return <WordsContext.Provider value={value}>{children}</WordsContext.Provider>
 }
