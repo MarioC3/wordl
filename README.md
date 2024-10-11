@@ -1,50 +1,40 @@
-# React + TypeScript + Vite
+# Wordl\*
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is my take on the famous [Wordle Game](https://www.nytimes.com/games/wordle/index.html), based on [Josh Comeau's Joy of React course](https://www.joyofreact.com/).
 
-Currently, two official plugins are available:
+This project helped me delve deeper into React concepts such as memoization (useMemo, memo) and data management with context without relying on third-party libraries like zustand or redux.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+I understand that applying these concepts to a small project like this may seem unnecessary, but I wanted to push myself and expand my knowledge.
 
-## Expanding the ESLint configuration
+## Acknowledgments
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+The [Joy of React](https://www.joyofreact.com/) is the best React course I've taken. Big Shotout to [Josh Comeau](https://x.com/JoshWComeau). His explanations of complex concepts and his breakdown of them are truly impressive. I've been learning a lot, not only from this course but also from his blog posts. He is genuinely one of the 🐐 in the JS educational space.
 
-- Configure the top-level `parserOptions` property like this:
+Also, this is a purely educational project. I wanted to go beyond Josh's project and explore, tinker, and learn with React APIs. I'm not affiliated with the New York Times Wordle project 😄.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Dev Stuff
+
+### Stack
+
+-   Node v20
+-   Pnpm
+-   Vite
+-   React
+-   Typescript
+-   Tailwind
+-   A tiny bit of Framer Motion
+
+### Development
+
+1. Install Dependencies
+
+```
+pnpm install
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. Start development server
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
 ```
+pnpm dev
+```
+3. Enjoy 🤙🏽
