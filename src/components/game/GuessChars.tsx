@@ -8,7 +8,7 @@ interface GuessCharsProps {
 	word: string
 }
 export const GuessChars = memo(({ word }: GuessCharsProps) => {
-	const { answer } = useContext(WordsContext)
+	const { answer } = useContext(WordsContext) 
 	const result = useMemo(() => checkGuess(word, answer) as Result[] | null, [word, answer])
 
 	return (
@@ -46,7 +46,7 @@ const Char = ({ result }: CharProps) => {
 	return (
 		<span
 			className={twMerge(
-				'flex aspect-square items-center justify-center rounded-sm border-2 border-slate-200 text-xl font-bold group-first:first:rounded-tl-xl group-first:last:rounded-tr-xl group-last:first:rounded-bl-xl group-last:last:rounded-br-xl',
+				'flex aspect-square items-center justify-center rounded-sm border border-slate-300 text-xl font-bold group-first:first:rounded-tl-xl group-first:last:rounded-tr-xl group-last:first:rounded-bl-xl group-last:last:rounded-br-xl',
 				statusClass
 			)}
 		>
