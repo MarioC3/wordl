@@ -13,7 +13,7 @@ function App() {
 			features={loadMotionFeatures}
 			strict
 		>
-			<div className="mx-auto flex h-full max-w-[400px] flex-col items-center gap-8 p-8 tracking-tight text-slate-900 selection:bg-slate-900 selection:text-white">
+			<div className="mx-auto flex min-h-screen max-w-[400px] flex-col items-center gap-10 px-4 py-8 tracking-tight text-slate-900 selection:bg-slate-900 selection:text-white">
 				<Header />
 				<main className="w-full flex-1">
 					<WordsProvider>

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useContext, memo } from 'react'
+import { useState, useContext, memo } from 'react'
 import { GuessContext } from '../../providers/GuessProvider'
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants'
 
@@ -6,25 +6,11 @@ export const GuessInput = memo(() => {
 	const { guesses, setGuesses } = useContext(GuessContext)
 	const [guess, setGuess] = useState('')
 
-	const guessInputRef = useRef<HTMLInputElement>(null)
-
 	const handleSubmit = () => {
 		const nextGuesses = [...guesses, guess]
 		setGuesses(nextGuesses)
 		setGuess('')
 	}
-
-	useEffect(() => {
-		const focusInput = () => {
-			guessInputRef.current?.focus()
-		}
-		focusInput()
-		window.addEventListener('focus', focusInput)
-
-		return () => {
-			window.removeEventListener('focus', focusInput)
-		}
-	}, [])
 
 	return (
 		<form
@@ -44,7 +30,6 @@ export const GuessInput = memo(() => {
 					maxLength={5}
 					title="Input only accepts 5 letters."
 					pattern="[a-zA-z]{5}"
-					ref={guessInputRef}
 					className="peer block w-full rounded-md border border-slate-300 bg-slate-100 text-2xl font-medium focus:border-slate-300 focus:outline-slate-300 focus:ring-0 disabled:border-transparent disabled:bg-slate-50"
 					type="text"
 					id="guess-input"

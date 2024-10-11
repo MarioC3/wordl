@@ -46,7 +46,7 @@ const Char = ({ result }: CharProps) => {
 	return (
 		<span
 			className={twMerge(
-				'flex aspect-square items-center justify-center rounded-sm border-2 border-slate-200 text-lg font-bold group-first:first:rounded-tl-xl group-first:last:rounded-tr-xl group-last:first:rounded-bl-xl group-last:last:rounded-br-xl',
+				'flex aspect-square items-center justify-center rounded-sm border-2 border-slate-200 text-xl font-bold group-first:first:rounded-tl-xl group-first:last:rounded-tr-xl group-last:first:rounded-bl-xl group-last:last:rounded-br-xl',
 				statusClass
 			)}
 		>
