@@ -27,7 +27,7 @@ export const GuessInput = memo(() => {
 				className="flex flex-col gap-1"
 			>
 				<span className="text-sm text-slate-700">Enter Guess:</span>
-				<div className="grid grid-cols-[1fr_auto] gap-2 rounded-md border border-slate-300 p-1 focus-within:border-slate-400">
+				<div className="grid grid-cols-[1fr_auto] items-center gap-2 rounded-md border border-slate-300 p-1 focus-within:border-slate-400">
 					<input
 						ref={inputRef}
 						disabled={guesses.length >= NUM_OF_GUESSES_ALLOWED}
@@ -45,7 +45,7 @@ export const GuessInput = memo(() => {
 							setGuess(nextGuess)
 						}}
 					/>
-					<button className="flex aspect-square items-center justify-center rounded-md bg-slate-100 text-slate-900 transition-colors hover:bg-slate-900 hover:text-white">
+					<button className="flex h-10 w-10 items-center justify-center rounded-md bg-slate-100 text-slate-900 transition-colors hover:bg-slate-900 hover:text-white">
 						<ArrowRight />
 					</button>
 				</div>
